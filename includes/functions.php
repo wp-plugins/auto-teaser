@@ -182,6 +182,8 @@
 	}
 
 	/**
+	 * Compares a setting with the current value and displays HTML attributes accordingly.
+	 *
 	 * @param        $setting_name
 	 * @param        $setting_value
 	 * @param string $mode
@@ -191,18 +193,6 @@
 	 */
 	function auto_teaser_check_setting($setting_name, $setting_value, $mode = "checked", $relation = "==") {
 		echo auto_teaser_get_check_setting($setting_name, $setting_value, $mode, $relation);
-	}
-
-	/**
-	 * @param $setting_name
-	 * @param $setting_value
-	 *
-	 * @since 0.1
-	 */
-	function auto_teaser_hidden($setting_name, $setting_value) {
-		if(auto_teaser_get_setting($setting_name) == $setting_value) {
-			echo ' hidden="hidden"';
-		}
 	}
 
 	/**
@@ -219,6 +209,7 @@
 	 * @return mixed
 	 */
 	function auto_teaser_replace_placeholders($string, $post_id = 0) {
+		/** Use default post ID if no post or 0 is given */
 		if(!$post_id) {
 			$post_id = get_the_ID();
 		}
@@ -238,6 +229,7 @@
 			$category_counter++;
 		}
 
+		/** Replacements */
 		$replacements = array(
 			"%excerpt%"         => $post->post_excerpt,
 			"%permalink%"       => get_permalink($post_id),
@@ -405,6 +397,8 @@
 	 *
 	 * @param int   $post_id
 	 * @param array $options
+	 *
+	 * @since 0.1
 	 */
 	function auto_teaser_the_auto_teaser($post_id = 0, array $options = array()) {
 		if(!$post_id) {
