@@ -16,6 +16,7 @@
 		}
 		/** Set option to remember if Auto Teaser has already been installed */
 		update_option("auto_teaser_installed", "true");
+
 		return true;
 	}
 
@@ -66,6 +67,7 @@
 	 */
 	function auto_teaser_replace_excerpt() {
 		global $post;
+
 		return auto_teaser_get_auto_teaser($post->ID);
 	}
 

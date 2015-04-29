@@ -8,29 +8,29 @@ strong {
 
 #auto-teaser-settings input[type="text"] {
 	height:   28px;
-	top:      1px;
 	position: relative;
+	top:      1px;
 }
 
 #auto-teaser-settings textarea {
-	width:  100%;
 	height: 100px;
 	resize: vertical;
+	width:  100%;
 }
 
 #auto-teaser-settings #row-teaser-format #teaser-character-counter {
+	color:     #999;
 	font-size: 12px;
 	padding:   3px;
 	position:  relative;
 	top:       -4px;
-	color:     #999999;
 }
 
 #auto-teaser-settings #row-teaser-format #teaser-format-preview {
+	background: #e0e0e0;
+	font-size:  12px;
 	margin-top: 20px;
 	padding:    5px;
-	background: #E0E0E0;
-	font-size:  12px;
 }
 
 #auto-teaser-settings #row-teaser-format #teaser-format-placeholders code {
@@ -44,8 +44,8 @@ strong {
 
 #auto-teaser-settings #row-teaser-format #teaser-format-placeholders th,
 #auto-teaser-settings #row-teaser-format #teaser-format-placeholders td {
-	padding-bottom: 0;
 	font-size:      12px;
+	padding-bottom: 0;
 }
 
 #auto-teaser-settings #row-teaser-split-style #teaser-split-value {

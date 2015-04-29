@@ -1,7 +1,7 @@
 === Auto Teaser ===
 Contributors: thaikolja
 Tags: teaser, auto teaser, excerpt, auto excerpt, intro, introduction
-Tested up to: 4.0
+Tested up to: 4.2.1
 Stable tag: 0.1
 Requires at least: 3.0.1
 License: GPLv2 or later
@@ -46,6 +46,11 @@ Feel free to contribute to Auto Teaser by translating it into your native langua
 2. The plugin's settings page.
 
 == Changelog ==
+
+= 0.2 =
+* WordPress 4.2.1 compatibility.
+* Updated translations.
+* Code cleanup.
 
 = 0.1 =
 * Initial release.

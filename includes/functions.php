@@ -8,6 +8,7 @@
 	 */
 	function auto_teaser_get_plugin_path() {
 		$path = str_replace("\\", "/", plugin_dir_path(dirname(__FILE__)));
+
 		return $path;
 	}
 
@@ -29,6 +30,7 @@
 	 */
 	function auto_teaser_get_plugin_url() {
 		$url = plugin_dir_url(dirname(__FILE__));
+
 		return $url;
 	}
 
@@ -52,6 +54,7 @@
 		$auto_teaser_php_path = auto_teaser_get_plugin_path() . "auto-teaser.php";
 		$auto_teaser_php      = esc_attr(file_get_contents($auto_teaser_php_path));
 		preg_match("'Version:(.*)\n'", $auto_teaser_php, $version);
+
 		return $version[1];
 	}
 
@@ -84,8 +87,9 @@
 			"allow_html_tags"              => "",
 			"exclude_ids"                  => array(),
 			"backup_teaser"                => "",
-			"backup_teaser_custom_text"    => "",
+			"backup_teaser_custom_text"    => ""
 		);
+
 		return $default_settings;
 	}
 
@@ -103,12 +107,12 @@
 		$default_settings = auto_teaser_get_default_settings();
 		foreach($default_settings as $default_setting => $default_value) {
 			$value = get_option("auto_teaser_" . $default_setting);
-			if(empty($value)) {
+			if(!$value) {
 				$value = $default_value;
 			}
 			if($default_setting == "exclude_ids") {
 				$value = preg_replace("'[^1-9,]'", "", $value);
-				if(empty($value)) {
+				if(!$value) {
 					$value = array();
 				}
 				else {
@@ -122,6 +126,7 @@
 			}
 			$settings[$default_setting] = $value;
 		}
+
 		return (array)$settings;
 	}
 
@@ -132,13 +137,14 @@
 	 *
 	 * @since 0.1
 	 *
-	 * @return bool
+	 * @return bool|string
 	 */
 	function auto_teaser_get_setting($setting) {
 		$settings = auto_teaser_get_settings();
 		if(!isset($settings[$setting])) {
 			return false;
 		}
+
 		return $settings[$setting];
 	}
 
@@ -178,6 +184,7 @@
 				$output = "";
 			}
 		}
+
 		return $output;
 	}
 
@@ -211,7 +218,7 @@
 	function auto_teaser_replace_placeholders($string, $post_id = 0) {
 		/** Use default post ID if no post or 0 is given */
 		if(!$post_id) {
-			$post_id = get_the_ID();
+			$post_id = (int)get_the_ID();
 		}
 		$post = get_post($post_id);
 		if(!$post) {
@@ -239,13 +246,14 @@
 			"%comments_number%" => $post->comment_count,
 			"%categories%"      => $category_list,
 			"%category_name%"   => get_cat_name($categories[0]),
-			"%category_url%"    => get_category_link($categories[0]),
+			"%category_url%"    => get_category_link($categories[0])
 		);
 		foreach($replacements as $placeholder => $replacement) {
 			if(strstr($string, $placeholder)) {
 				$string = str_replace($placeholder, $replacement, $string);
 			}
 		}
+
 		return $string;
 	}
 
@@ -272,7 +280,7 @@
 			"allow_html_tags"           => auto_teaser_get_setting("allow_html_tags"),
 			"exclude_ids"               => auto_teaser_get_setting("exclude_ids"),
 			"backup_teaser"             => auto_teaser_get_setting("backup_teaser"),
-			"backup_teaser_custom_text" => auto_teaser_get_setting("backup_teaser_custom_text"),
+			"backup_teaser_custom_text" => auto_teaser_get_setting("backup_teaser_custom_text")
 		);
 		/** Use default value if setting not set */
 		foreach($default_options as $option_name => $default_value) {
@@ -281,14 +289,14 @@
 			}
 		}
 		if(!$post_id) {
-			$post_id = get_the_ID();
+			$post_id = (int)get_the_ID();
 		}
 
 		/** Apply filter if it exists */
 		$options = apply_filters("auto_teaser_get_auto_teaser_options", $options, $post_id);
 
 		/** Stop script if post is among the excluded post IDs */
-		if(in_array($post_id, $options["exclude_ids"])) {
+		if(in_array($post_id, $options["exclude_ids"], false)) {
 			return false;
 		}
 
@@ -373,7 +381,7 @@
 			if($options["allow_html"] == "custom") {
 				$html_tags = $options["allow_html_tags"];
 				/** Glue HTML tags together */
-				foreach($html_tags as $html_tag) {
+				foreach((array)$html_tags as $html_tag) {
 					$allowed_tags .= "<" . trim($html_tag) . ">";
 				}
 			}
@@ -388,7 +396,9 @@
 
 		/** Apply filter if it exists */
 		$teaser = apply_filters("auto_teaser_get_auto_teaser", $teaser, $post_id);
+
 		/** Return our final teaser */
+
 		return $teaser;
 	}
 
@@ -402,12 +412,12 @@
 	 */
 	function auto_teaser_the_auto_teaser($post_id = 0, array $options = array()) {
 		if(!$post_id) {
-			$post_id = get_the_ID();
+			$post_id = (int)get_the_ID();
 		}
 		$default_options = array(
 			"container"       => "p",
 			"container_id"    => "auto-teaser-%post_id%",
-			"container_class" => "",
+			"container_class" => ""
 		);
 		foreach($default_options as $option_name => $default_value) {
 			if(isset($options[$option_name]) || empty($options[$option_name])) {
