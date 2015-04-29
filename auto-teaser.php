@@ -22,6 +22,5 @@
 	 */
 	$include_files = glob(dirname(__FILE__) . "/includes/*.php");
 	foreach($include_files as $include_file) {
-		/** @noinspection PhpIncludeInspection */
 		include($include_file);
 	}
