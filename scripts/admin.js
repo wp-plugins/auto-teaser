@@ -109,8 +109,7 @@ jQuery(document).ready(
 					showPlaceholders.hide();
 					hidePlaceholders.show();
 					placeholdersShown = false;
-				}
-				else {
+				} else {
 					placeholders.slideDown();
 					showPlaceholders.show();
 					hidePlaceholders.hide();

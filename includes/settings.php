@@ -30,7 +30,12 @@
 			<form action="" method="post">
 				<table class="form-table" id="auto-teaser-settings">
 					<tr id="row-teaser-format">
-						<th><label for="teaser-format"><?php _e("Teaser format", "auto_teaser"); ?></label></th>
+						<th>
+							<label for="teaser-format">
+								<i class="fa fa-align-left"></i>
+								<?php _e("Teaser format", "auto_teaser"); ?>
+							</label>
+						</th>
 						<td>
 							<textarea name="teaser_format" id="teaser-format"><?php echo stripslashes(esc_attr(auto_teaser_get_setting("teaser_format"))); ?></textarea>
 							<div id="teaser-character-counter"><?php echo sprintf(__("%s characters", "auto_teaser"), '<span id="teaser-character-count">0</span>'); ?></div>
@@ -156,7 +161,12 @@
 						</td>
 					</tr>
 					<tr id="row-teaser-split-style">
-						<th><label for="teaser-split-style"><?php _e("Teaser split style", "auto_teaser"); ?></label></th>
+						<th>
+							<label for="teaser-split-style">
+								<i class="fa fa-scissors"></i>
+								<?php _e("Teaser split style", "auto_teaser"); ?>
+							</label>
+						</th>
 						<td>
 							<select name="teaser_split_style" id="teaser-split-style">
 								<?php
@@ -194,7 +204,11 @@
 						</td>
 					</tr>
 					<tr id="row-replace-excerpt">
-						<th><label for="replace-excerpt-yes"><?php _e("Replace default excerpt", "auto_teaser"); ?></label>
+						<th>
+							<label for="replace-excerpt-yes">
+								<i class="fa fa-clipboard"></i>
+								<?php _e("Replace default excerpt", "auto_teaser"); ?>
+							</label>
 						</th>
 						<td>
 							<input type="radio" name="replace_excerpt" value="on" id="replace-excerpt-yes"<?php auto_teaser_check_setting("replace_excerpt", "on"); ?> />
@@ -205,7 +219,12 @@
 						</td>
 					</tr>
 					<tr id="row-allow-html">
-						<th><label for="allow-html-yes"><?php _e("Allow HTML", "auto_teaser"); ?></label></th>
+						<th>
+							<label for="allow-html-yes">
+								<i class="fa fa-code"></i>
+								<?php _e("Allow HTML", "auto_teaser"); ?>
+							</label>
+						</th>
 						<td>
 							<input type="radio" name="allow_html" id="allow-html-yes" value="on"<?php auto_teaser_check_setting("allow_html", "on"); ?> />
 							<label for="allow-html-yes"><?php _e("Yes", "auto_teaser"); ?></label>
@@ -222,14 +241,24 @@
 						</td>
 					</tr>
 					<tr id="row-exclude-ids">
-						<th><label for="exclude-ids"><?php _e("Exclude post IDs", "auto_teaser"); ?></label></th>
+						<th>
+							<label for="exclude-ids">
+								<i class="fa fa-times"></i>
+								<?php _e("Exclude post IDs", "auto_teaser"); ?>
+							</label>
+						</th>
 						<td>
 							<input type="text" name="exclude_ids" id="exclude-ids" placeholder="<?php _e("E.g.: 13, 84, 194", "auto_teaser"); ?>" value="<?php echo implode(", ", auto_teaser_get_setting("exclude_ids")); ?>"/>
 							<p class="description"><?php _e("Post IDs Auto Teaser will ignore. Separate multiple IDs with commas.", "auto_teaser"); ?></p>
 						</td>
 					</tr>
 					<tr id="row-backup-teaser">
-						<th><label for="backup-teaser"><?php _e("Backup teaser", "auto_teaser"); ?></label></th>
+						<th>
+							<label for="backup-teaser">
+								<i class="fa fa-floppy-o"></i>
+								<?php _e("Backup teaser", "auto_teaser"); ?>
+							</label>
+						</th>
 						<td>
 							<label for="backup-teaser"><?php _e("Show", "auto_teaser"); ?> </label>
 							<select name="backup_teaser" id="backup-teaser">
@@ -251,6 +280,11 @@
 				<input type="submit" class="button button-primary" value="<?php _e("Save changes", "auto_teaser"); ?>"/>
 				<?php wp_nonce_field("save_settings", "nonce"); ?>
 			</form>
+			<br/>
+			<br/>
+			<div id="report-bug">
+				<small><?php echo sprintf(__('Found an error? Help making Auto Teaser better by <a href="%s" title="Click here to report a bug" target="_blank">quickly reporting the bug</a>.', "auto_teaser"), "http://www.wordpress.org/support/plugin/auto-teaser#postform"); ?></small>
+			</div>
 		</div>
 	<?php
 	}

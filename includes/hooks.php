@@ -42,6 +42,8 @@
 	 */
 	function auto_teaser_admin_scripts_and_styles() {
 		wp_enqueue_style("auto-teaser-admin", auto_teaser_get_plugin_url() . "styles/admin.css", array(), auto_teaser_get_plugin_version());
+		wp_enqueue_style("auto-teaser-font-awesome", "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", array(), "4.3.0");
+
 		wp_enqueue_script("auto-teaser-admin", auto_teaser_get_plugin_url() . "scripts/admin.js", array(), auto_teaser_get_plugin_version());
 	}
 

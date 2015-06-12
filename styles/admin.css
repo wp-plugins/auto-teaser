@@ -6,6 +6,10 @@ strong {
 	width: 60%;
 }
 
+#auto-teaser-settings i {
+	margin-right: 5px;
+}
+
 #auto-teaser-settings input[type="text"] {
 	height:   28px;
 	position: relative;
