@@ -85,10 +85,27 @@ jQuery(document).ready(
 		 *
 		 * @since 0.1
 		 */
+		var previewToggled = false;
 		jQuery("#show-teaser-format-preview, #hide-teaser-format-preview").click(
 			function() {
+				var preview, showLink, hideLink;
+
+				preview = jQuery("#teaser-format-preview");
+				showLink = jQuery("#show-teaser-format-preview");
+				hideLink = jQuery("#hide-teaser-format-preview");
+
+				if(previewToggled) {
+					hideLink.hide();
+					showLink.show();
+					preview.slideUp();
+					previewToggled = false;
+				} else {
+					hideLink.show();
+					showLink.hide();
+					preview.slideDown();
+					previewToggled = true;
+				}
 				event.preventDefault();
-				toggleLink("#show-teaser-format-preview", "#hide-teaser-format-preview", "#teaser-format-preview");
 			}
 		);
 
@@ -106,13 +123,13 @@ jQuery(document).ready(
 				event.preventDefault();
 				if(placeholdersShown) {
 					placeholders.slideUp();
-					showPlaceholders.hide();
-					hidePlaceholders.show();
-					placeholdersShown = false;
-				} else {
-					placeholders.slideDown();
 					showPlaceholders.show();
 					hidePlaceholders.hide();
+					placeholdersShown = false;
+				} else {
+					showPlaceholders.hide();
+					hidePlaceholders.show();
+					placeholders.slideDown();
 					placeholdersShown = true;
 				}
 			}

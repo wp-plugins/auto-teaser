@@ -37,7 +37,7 @@
 							</label>
 						</th>
 						<td>
-							<textarea name="teaser_format" id="teaser-format"><?php echo stripslashes(esc_attr(auto_teaser_get_setting("teaser_format"))); ?></textarea>
+							<textarea placeholder="<?php _e("Enter teaser format...", "auto_teaser"); ?>" name="teaser_format" id="teaser-format"><?php echo stripslashes(esc_attr(auto_teaser_get_setting("teaser_format"))); ?></textarea>
 							<div id="teaser-character-counter"><?php echo sprintf(__("%s characters", "auto_teaser"), '<span id="teaser-character-count">0</span>'); ?></div>
 							<p class="description">
 								<?php _e("Defines the way the teaser is being displayed. <strong>HTML allowed</strong>.", "auto_teaser"); ?>
@@ -286,5 +286,5 @@
 				<small><?php echo sprintf(__('Found an error? Help making Auto Teaser better by <a href="%s" title="Click here to report a bug" target="_blank">quickly reporting the bug</a>.', "auto_teaser"), "http://www.wordpress.org/support/plugin/auto-teaser#postform"); ?></small>
 			</div>
 		</div>
-	<?php
+		<?php
 	}

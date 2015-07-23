@@ -1,7 +1,7 @@
 === Auto Teaser ===
 Contributors: thaikolja
 Tags: teaser, auto teaser, excerpt, auto excerpt, intro, introduction
-Tested up to: 4.2.2
+Tested up to: 4.2.3
 Stable tag: 1.0.0
 Requires at least: 3.0.1
 License: GPLv2 or later
@@ -47,6 +47,12 @@ Feel free to contribute to Auto Teaser by translating it into your native langua
 
 == Changelog ==
 
+= 1.1.0 =
+* Added compatibility for WordPress 4.2.3.
+* Fixed JavaScript bug.
+* Updated code format.
+* Updated translations.
+
 = 1.0.0 =
 * Stable release.
 * WordPress 4.2.2. compatibility.
@@ -61,6 +67,8 @@ Feel free to contribute to Auto Teaser by translating it into your native langua
 * Initial release.
 
 == Upgrade Notice ==
+
+Compatibility and translation update.
 
 = 1.0.0 =
 Stable release.

@@ -41,10 +41,11 @@
 	 * @since 0.1
 	 */
 	function auto_teaser_admin_scripts_and_styles() {
-		wp_enqueue_style("auto-teaser-admin", auto_teaser_get_plugin_url() . "styles/admin.css", array(), auto_teaser_get_plugin_version());
-		wp_enqueue_style("auto-teaser-font-awesome", "//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", array(), "4.3.0");
+		$root = auto_teaser_get_plugin_url();
+		wp_enqueue_style("auto-teaser-admin", "$root/styles/admin.css", array(), auto_teaser_get_plugin_version());
+		wp_enqueue_style("auto-teaser-font-awesome", "$root/fonts/css/font-awesome.min.css", array(), "4.3.0");
 
-		wp_enqueue_script("auto-teaser-admin", auto_teaser_get_plugin_url() . "scripts/admin.js", array(), auto_teaser_get_plugin_version());
+		wp_enqueue_script("auto-teaser-admin", "$root/scripts/admin.js", array(), auto_teaser_get_plugin_version());
 	}
 
 	/**
@@ -52,11 +53,12 @@
 	 *
 	 * @since 0.1
 	 */
-	function auto_teaser_load_localizations() {
-		load_plugin_textdomain("auto_teaser", false, dirname(plugin_basename(__FILE__)) . "/../languages");
+	function auto_teaser_load_translations() {
+		$translation_path = plugin_dir_path(__FILE__) . "../languages/" . get_site_option("WPLANG") . ".mo";
+		load_textdomain("auto_teaser", $translation_path);
 	}
 
-	add_action("init", "auto_teaser_load_localizations");
+	add_action("init", "auto_teaser_load_translations");
 
 	/**
 	 * Replaces excerpts with the generated teaser.
